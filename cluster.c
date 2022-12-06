@@ -207,14 +207,14 @@ float cluster_distance(struct cluster_t *c1, struct cluster_t *c2) //TODO
     assert(c2 != NULL);
     assert(c2->size > 0);
 
-   float vzdalenost = 0.0; //vzdalenost dvou prvku
+   float vzdalenost = INT_MAX; //vzdalenost dvou prvku
    float tmp; //pomocna promenna tmp
    for(int i = 0; i < c1->size; i++) //pro kazdy prvek z c1
    {
         for (int j = 0; j < c2->size; j++) //pro kazdy prvek z c2
         {
             tmp = obj_distance(&c1->obj[i], &c2->obj[j]); //pocita vzdalenost dvou objektu z dvou shluku
-            if(tmp > vzdalenost) //pokud je vzdalenost mensi nez tmp
+            if(tmp < vzdalenost) //pokud je vzdalenost vetsi nez tmp
             {
                 vzdalenost = tmp; //nova vzdalenost
             }
